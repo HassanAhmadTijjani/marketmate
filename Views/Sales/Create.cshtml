@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "New Sale";
+    var products = ViewBag.Products as List<ShopTracker.Models.Product>;
+}
+
+<h2>Record Sale</h2>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label>Select Product</label>
+        <select name="productId" class="form-control">
+           @if (products != null && products.Any())
+{
+    foreach (var product in products)
+    {
+        <option value="@product.ProductId">
+            @product.Name (Stock: @product.QuantityInStock)
+        </option>
+    }
+}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Quantity</label>
+        <input type="number" name="quantity" class="form-control" min="1" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Sale</button>
+</form>

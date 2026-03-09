@@ -87,7 +87,7 @@ namespace ShopTracker.Controllers
             var saleItems = _context.SaleItems.AsNoTracking()
                 .Include(s => s.Product)
                 .Include(s => s.Sale)
-                .Where(s => s.Sale.UserId.ToString() == userId).OrderByDescending(s => s.Sale.DateCreated);
+                .Where(s => s.Sale.UserId == userId).OrderByDescending(s => s.Sale.DateCreated);
 
             return View(await saleItems.ToListAsync());
         }

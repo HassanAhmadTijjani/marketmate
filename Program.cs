@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using ShopTracker.Data;
 using ShopTracker.Models;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(Options => Options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

@@ -40,7 +40,7 @@ public class Product
     [ValidateNever]
     public ApplicationUser User { get; set; } = null!;
 
-    public DateTime DateCreated { get; set; } = DateTime.Now;
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
 
 

@@ -6,9 +6,9 @@ public class Sale
 {
      public int SaleId { get; set; }
 
-    public DateTime DateCreated { get; set; } = DateTime.Now;
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 
-    public DateTime DateSold { get; set; } = DateTime.Now;
+    public DateTime DateSold { get; set; } = DateTime.UtcNow;
 
     public string? UserId { get; set; }
 

@@ -264,7 +264,7 @@ namespace ShopTracker.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             product.UserId = userId;
-            product.DateCreated = DateTime.Now;
+            product.DateCreated = DateTime.UtcNow;
 
             _context.Products.Add(product);
             await _context.SaveChangesAsync();

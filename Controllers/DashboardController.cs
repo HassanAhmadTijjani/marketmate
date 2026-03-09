@@ -23,7 +23,7 @@ namespace ShopTracker.Controllers
         //     ViewData["outOfStock"] = outOfStock;
         //     // var today = DateTime.Today;
         //     // var tomorrow = today.AddDays(1);
-        //     // var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+        //     // var startOfMonth = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
         //     // var nextMonth = startOfMonth.AddMonths(1);
         //     return View();
         // }

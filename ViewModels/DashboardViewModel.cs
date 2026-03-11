@@ -26,6 +26,9 @@ public class DashboardViewModel
 public decimal WeeklyRevenue { get; set; }
 public decimal WeeklyProfit { get; set; }
 public int WeeklyItemsSold { get; set; }
+public decimal DailyRevenue { get; set; }
+public decimal DailyProfit { get; set; }
+public int DailyItemsSold { get; set; }
 
     // public decimal TotalRevenue { get; set; }      // Total money earned from sales
     //         public decimal TotalCost { get; set; }         // Total cost of sold items

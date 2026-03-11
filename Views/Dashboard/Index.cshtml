@@ -96,6 +96,36 @@
         </div>
     </div>
 
+    <div class="col-md-3">
+        <div class="card kard kard-success text-center border-primary">
+            <div class="card-body">
+                                        <i class="bi bi-box text-light" style="font-size: 2rem;"></i>
+                <h5 class="card-title">Daily Revenue</h5>
+                <p class="card-text">@Model.DailyRevenue</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card kard kard-success text-center border-primary">
+            <div class="card-body">
+                                        <i class="bi bi-box text-light" style="font-size: 2rem;"></i>
+                <h5 class="card-title">Daily Profit</h5>
+                <p class="card-text">@Model.DailyProfit</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card kard kard-success text-center border-primary">
+            <div class="card-body">
+                                        <i class="bi bi-box text-light" style="font-size: 2rem;"></i>
+                <h5 class="card-title">Daily Items Sold</h5>
+                <p class="card-text">@Model.DailyItemsSold</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @if (Model.SoldOutProducts.Any())

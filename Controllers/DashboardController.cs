@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopTracker.Data;
+using ShopTracker.Models;
 using ShopTracker.ViewModels;
 
 namespace ShopTracker.Controllers
@@ -43,6 +44,17 @@ namespace ShopTracker.Controllers
 
             // End of week (next Monday)
             var endOfWeek = startOfWeek.AddDays(7);
+
+            var todayday = DateTime.Today;
+            var endOfDay = DateTime.Today.AddDays(1);
+
+
+            var dailySales = await _context.SaleItems.Include(s => s.Sale).Where(s => s.Sale.UserId == userId && s.Sale.DateSold >= todayday && s.Sale.DateSold <= endOfDay).ToListAsync();
+            var dailyRevenue = dailySales.Sum(s => s.PriceAtSale * s.Quantity);
+            var dailyCost = dailySales.Sum(s => s.CostAtSale * s.Quantity);
+            var dailyProfit = dailyRevenue - dailyCost;
+            var dailyItemsSold = dailySales.Sum(s => s.Quantity);
+
 
             var weeklySales = await _context.SaleItems
     .Include(s => s.Sale)
@@ -86,7 +98,10 @@ namespace ShopTracker.Controllers
                 WeeklyRevenue = weeklyRevenue,
                 WeeklyProfit = weeklyProfit,
                 WeeklyItemsSold = weeklyItemsSold,
-                TotalProductsInStock = TotalProductsInStock
+                TotalProductsInStock = TotalProductsInStock,
+                DailyRevenue = dailyRevenue,
+                DailyProfit = dailyProfit,
+                DailyItemsSold = dailyItemsSold
             };
 
             return View(dashboard);
